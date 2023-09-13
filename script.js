@@ -47,7 +47,9 @@ function appendNum(number) {
   if (calcScreen.textContent === '0' || resetScreen) {
     resetScreenFunc();
   }
-  calcScreen.textContent += number;
+  if (calcScreen.textContent.length < 8) {
+    calcScreen.textContent += number;
+  }
 }
 
 function add(a, b) {
@@ -94,7 +96,7 @@ function operate(sign, a, b) {
       return multiply(a, b);
     case "÷":
       if (b === 0) {
-        return null;
+        return "null";
       } else {
         return divide(a, b);
       }
