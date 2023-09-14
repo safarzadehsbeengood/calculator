@@ -74,7 +74,11 @@ function roundNum(num) {
 
 function evaluate() {
   secondNum = calcScreen.textContent;
-  calcScreen.textContent = roundNum(operate(currentOperation, firstNum, secondNum));
+  var ans = roundNum(operate(currentOperation, firstNum, secondNum));
+  if (ans.toString().length > 8) {
+    ans = ans.toExponential(2);
+  }
+  calcScreen.textContent = ans;
   currentOperation = null;
   resetScreen = true;
 }
